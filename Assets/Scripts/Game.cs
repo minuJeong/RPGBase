@@ -19,40 +19,10 @@ public class Game : MonoBehaviour
 	// Handle User Input
 	void Update ()
 	{
-		/// Control Movement
-		List<Vector3> dirs = new List<Vector3> ();
+		float x = Input.GetAxis("Horizontal");
+		float z = Input.GetAxis("Vertical");
 
-		if (Input.GetKey (KeyCode.LeftArrow))
-		{
-			dirs.Add (Vector3.left);
-		}
-
-		if (Input.GetKey (KeyCode.UpArrow))
-		{
-			dirs.Add (Vector3.forward);
-		}
-
-		if (Input.GetKey (KeyCode.RightArrow))
-		{
-			dirs.Add (Vector3.right);
-		}
-
-		if (Input.GetKey (KeyCode.DownArrow))
-		{
-			dirs.Add (Vector3.back);
-		}
-
-		if (dirs.Count != 0)
-		{
-			Vector3 dir = Vector3.zero;
-			dirs.ForEach (v =>
-			{
-				dir += v;
-			});
-
-			_Pawn.Move (dir.normalized);
-		}
-
+		_Pawn.Move (new Vector3(x, 0, z));
 
 		/// Control Attack
 		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Z))

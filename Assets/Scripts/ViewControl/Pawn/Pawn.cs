@@ -1,13 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
-
-[System.Serializable]
-public class PawnStat
-{
-	
-}
 
 public abstract class Pawn : MonoBehaviour
 {
@@ -15,15 +7,12 @@ public abstract class Pawn : MonoBehaviour
 
 	protected const float ATTACK_MOTION_TIME = 0.5F;
 
-
 	protected NavMeshAgent _Motor;
 
 	protected Animator _Mecanim;
 
-	[SerializeField]
-	protected PawnStat _Stat;
-
 	private float _MotionTime;
+
 
 	protected void Start ()
 	{
@@ -66,13 +55,5 @@ public abstract class Pawn : MonoBehaviour
 		_MotionTime = Time.time + ATTACK_MOTION_TIME;
 
 		_Motor.SetDestination(transform.position);
-	}
-}
-
-public class PlayerPawn : Pawn
-{
-	protected override void Init ()
-	{
-		Debug.Assert (_Stat != null);
 	}
 }
