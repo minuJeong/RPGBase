@@ -3,24 +3,29 @@ using System.Collections;
 
 public class CameraControl : MonoBehaviour
 {
-	[SerializeField]
-	PlayerPawn _Target;
-
 	Vector3 _Offset;
 
-	// Use this for initialization
-	void Start ()
-	{
-		Debug.Assert (_Target != null);
+	PlayerPawn _Pawn;
 
-		_Offset = _Target.transform.position - transform.position;
+	public void Init (PlayerPawn pawn)
+	{
+		_Pawn = pawn;
+
+		_Offset = _Pawn.transform.position - transform.position;
+
+		StartCoroutine (OnEnterFrame ());	
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	IEnumerator OnEnterFrame ()
 	{
-		Vector3 lerpTo = _Target.transform.position - _Offset;
+		while (true)
+		{
+			yield return null;
 
-		transform.position = Vector3.Lerp (transform.position, lerpTo, 0.1F);
+			Vector3 lerpTo = _Pawn.transform.position - _Offset;
+
+			transform.position = Vector3.Lerp (transform.position, lerpTo, 0.1F);
+		}
 	}
 }

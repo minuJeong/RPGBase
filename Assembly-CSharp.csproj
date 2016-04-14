@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1608AB77-2615-914F-CFFE-9FA9CC7F4E5A}</ProjectGuid>
+    <ProjectGuid>{090078E2-8483-0FFF-DB12-104F40C9EF7E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\EditorMarker\EventMarker.cs" />
+     <Compile Include="Assets\Scripts\EditorMarker\StartLocation.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\Tag.cs" />
      <Compile Include="Assets\Scripts\ViewControl\CameraControl.cs" />
@@ -52,6 +54,7 @@
      <Compile Include="Assets\Scripts\ViewControl\Pawn\EnemyPawn.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\Pawn.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\PlayerPawn.cs" />
+     <None Include="Assets\Resources_Static\Prefabs\EventMarker\StartLocationPreview.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -6,28 +6,47 @@ public class Game : MonoBehaviour
 {
 	public static Game Instance;
 
+
+	[HideInInspector]
 	public PlayerPawn _Pawn;
 
+	public CameraControl _MainCamera;
+
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 		Instance = this;
 
-		Debug.Assert (_Pawn != null);
+		Debug.Assert (_MainCamera != null);
+	}
+
+
+	public void Init (PlayerPawn pawn)
+	{
+		_Pawn = pawn;
+
+		_MainCamera.Init (pawn);
+
+		StartCoroutine (OnEnterFrame ());
 	}
 	
 	// Handle User Input
-	void Update ()
+	IEnumerator OnEnterFrame ()
 	{
-		float x = Input.GetAxis("Horizontal");
-		float z = Input.GetAxis("Vertical");
-
-		_Pawn.Move (new Vector3(x, 0, z));
-
-		/// Control Attack
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Z))
+		while (true)
 		{
-			_Pawn.Attack ();
+			yield return null;
+
+			float x = Input.GetAxis ("Horizontal");
+			float z = Input.GetAxis ("Vertical");
+
+			_Pawn.Move (new Vector3 (x, 0, z));
+
+			/// Control Attack
+			if (Input.GetKey (KeyCode.Space) || Input.GetKeyDown (KeyCode.Z))
+			{
+				_Pawn.Attack ();
+			}
 		}
 	}
 }
