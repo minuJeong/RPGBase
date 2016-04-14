@@ -45,15 +45,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Application\FrontEnd.cs" />
+     <Compile Include="Assets\Scripts\Application\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\EditorMarker\EventMarker.cs" />
+     <Compile Include="Assets\Scripts\EditorMarker\GateLocation.cs" />
      <Compile Include="Assets\Scripts\EditorMarker\StartLocation.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
+     <Compile Include="Assets\Scripts\Hud.cs" />
+     <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\DataModel.cs" />
+     <Compile Include="Assets\Scripts\Manager\GateManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\Manager.cs" />
      <Compile Include="Assets\Scripts\Tag.cs" />
-     <Compile Include="Assets\Scripts\ViewControl\CameraControl.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\AnimControl\PawnControl.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\EnemyPawn.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\Pawn.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\PlayerPawn.cs" />
+     <None Include="Assets\Resources_Static\Common\Materials\GateIcon.shader" />
      <None Include="Assets\Resources_Static\Prefabs\EventMarker\StartLocationPreview.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

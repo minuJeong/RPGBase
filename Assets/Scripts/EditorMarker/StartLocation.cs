@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StartLocation : EventMarker
@@ -18,6 +19,10 @@ public class StartLocation : EventMarker
 
 		pawn.transform.position = transform.position;
 
-		Game.Instance.Init (pawn);
+		InitLevelData data = new InitLevelData ();
+		data._Pawn = pawn;
+		data._CurrentSceneName = SceneManager.GetActiveScene().name;
+
+		Game.Instance.Init (data);
 	}
 }

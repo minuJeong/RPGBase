@@ -10,7 +10,7 @@ public abstract class EventMarker : MonoBehaviour
 	{
 		Init ();
 
-		Destroy (gameObject);
+		gameObject.SetActive (false);
 	}
 
 	protected abstract void Init ();

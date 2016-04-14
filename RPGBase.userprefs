@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/MenuTools.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Game.cs" Line="20" Column="19" />
+      <File FileName="Assets/Scripts/Manager/InitializedOnLevel.cs" Line="6" Column="19" />
+      <File FileName="Assets/Scripts/Manager/DataModel.cs" Line="11" Column="9" />
+      <File FileName="Assets/Scripts/Application/LevelLoader.cs" Line="27" Column="26" />
+      <File FileName="Assets/Scripts/EditorMarker/StartLocation.cs" Line="19" Column="7" />
+      <File FileName="Assets/Editor/MenuTools.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

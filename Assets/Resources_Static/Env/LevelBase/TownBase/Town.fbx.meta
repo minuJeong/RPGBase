@@ -1,28 +1,15 @@
 fileFormatVersion: 2
-guid: f09d410c7b85b49d19215b1243711b8a
-timeCreated: 1460523027
+guid: 862ed1ff0b1d24de2a07808933e8f443
+timeCreated: 1460652709
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCube1
-    100004: pCube2
-    100006: pCube3
-    100008: transform1
-    100010: transform2
     400000: //RootNode
-    400002: pCube1
-    400004: pCube2
-    400006: pCube3
-    400008: transform1
-    400010: transform2
-    2300000: pCube3
-    2300002: //RootNode
-    3300000: pCube3
-    3300002: //RootNode
-    4300000: pCube3
-    4300002: Body
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Base
   materials:
     importMaterials: 1
     materialName: 0
@@ -66,7 +53,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -6,36 +7,75 @@ public class Game : MonoBehaviour
 {
 	public static Game Instance;
 
-
 	[HideInInspector]
 	public PlayerPawn _Pawn;
 
-	public CameraControl _MainCamera;
+	public List<Manager> _Managers = new List<Manager> ();
+
+	private Coroutine _FrameUpdater;
 
 	// Use this for initialization
 	void Awake ()
 	{
 		Instance = this;
 
-		Debug.Assert (_MainCamera != null);
+		DontDestroyOnLoad (gameObject);
+
+		Debug.Assert (_Managers.TrueForAll (x =>
+		{
+			return x != null;
+		}));
 	}
 
 
-	public void Init (PlayerPawn pawn)
+	/// <summary>
+	/// Called by StartLocation
+	/// </summary>
+	/// <param name="pawn">Pawn.</param>
+	public void Init (InitLevelData data)
 	{
-		_Pawn = pawn;
+		// Init me
+		_Pawn = data._Pawn;
 
-		_MainCamera.Init (pawn);
+		// Init managers
+		InitLevelData model = new InitLevelData ();
 
-		StartCoroutine (OnEnterFrame ());
+		model._Pawn = data._Pawn;
+
+		_Managers.ForEach (x =>
+		{
+			x.Init (model);
+		});
+
+		// Start frame update
+		if (_FrameUpdater != null)
+		{
+			StopCoroutine (_FrameUpdater);
+		}
+		_FrameUpdater = StartCoroutine (FrameUpdate ());
 	}
+
+
+	public T GetManager<T> () where T : Manager
+	{
+		return _Managers.FindAll (manager =>
+		{
+			return (manager as T) != null;
+		}) [0] as T;
+	}
+
 	
 	// Handle User Input
-	IEnumerator OnEnterFrame ()
+	IEnumerator FrameUpdate ()
 	{
 		while (true)
 		{
 			yield return null;
+
+			if (_Pawn == null)
+			{
+				yield break;
+			}
 
 			float x = Input.GetAxis ("Horizontal");
 			float z = Input.GetAxis ("Vertical");
