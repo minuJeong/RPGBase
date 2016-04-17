@@ -1,13 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class Manager : MonoBehaviour
 {
+	private static readonly List<System.Type> _LoadedManagers = new List<System.Type> ();
+
 	Coroutine _Updater;
 
-	public void Init (InitLevelData data)
+	public void Init ()
 	{
-		OnInit (data);
+		// Confirm that each type of manager exists only one
+		if (_LoadedManagers.Contains (this.GetType ()))
+		{
+			Debug.LogError ("[ERR] Duplicate manager loaded");
+		}
+		_LoadedManagers.Add (this.GetType ());
+
+		OnInit ();
 
 		StartFrameUpdate ();
 	}
@@ -21,7 +31,10 @@ public abstract class Manager : MonoBehaviour
 		_Updater = StartCoroutine (UpdateFrame ());
 	}
 
-	protected abstract void OnInit (InitLevelData data);
+	protected abstract void OnInit ();
 
-	protected abstract IEnumerator UpdateFrame ();
+	protected virtual IEnumerator UpdateFrame ()
+	{
+		yield break;
+	}
 }

@@ -15,5 +15,9 @@ public class FrontEnd : MonoBehaviour
 
 			DontDestroyOnLoad (gameObject);
 		}
+		else
+		{
+			Destroy (gameObject);
+		}
 	}
 }

@@ -1,23 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraManager : Manager
+public sealed class CameraManager : Manager
 {
-	PlayerPawn _Pawn;
+	PlayerPawn __TargetPawn;
+
+	public PlayerPawn _TargetPawn
+	{
+		get
+		{
+			return __TargetPawn;
+		}
+
+		set
+		{
+			Debug.Assert (value != null);
+
+			__TargetPawn = value;
+
+			transform.position = _TargetPawn.transform.position;
+		}
+	}
 
 	Coroutine _Updater;
 
-	protected override void OnInit (InitLevelData data)
+	protected override void OnInit ()
 	{
-		_Pawn = data._Pawn;
-
-		transform.position = _Pawn.transform.position;
-
 		if (_Updater != null)
 		{
 			StopCoroutine (_Updater);
 		}
 		_Updater = StartCoroutine (UpdateFrame ());
+
+		Game.Instance.AddEventListener (EventName.START_LEVEL, OnStartLevel);
 	}
 	
 	// Update is called once per frame
@@ -27,12 +42,17 @@ public class CameraManager : Manager
 		{
 			yield return null;
 
-			if (_Pawn == null)
+			if (_TargetPawn == null)
 			{
-				yield break;
+				continue;
 			}
 
-			transform.position = Vector3.Lerp (transform.position, _Pawn.transform.position, 0.1F);
+			transform.position = Vector3.Lerp (transform.position, _TargetPawn.transform.position, 0.1F);
 		}
+	}
+
+	void OnStartLevel (EventData data)
+	{
+		_TargetPawn = Game.Instance._PlayerPawn;
 	}
 }

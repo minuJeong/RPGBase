@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class LevelLoader : MonoBehaviour
+public sealed class LevelLoader : MonoBehaviour
 {
 	[SerializeField]
-	private string[] _SceneNames;
+	protected string[] _SceneNames;
 
 	private const string SCENE_ROOT_PATH = "Levels";
 
@@ -35,6 +35,6 @@ public class LevelLoader : MonoBehaviour
 
 	void LoadLevel (string sceneName)
 	{
-		SceneManager.LoadScene (sceneName, LoadSceneMode.Single);
+		Game.Instance.GetManager<LevelManager> ().LoadLevel (new MoveToEventData (sceneName, ""));
 	}
 }

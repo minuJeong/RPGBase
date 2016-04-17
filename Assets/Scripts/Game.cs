@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,12 +6,18 @@ public class Game : MonoBehaviour
 {
 	public static Game Instance;
 
-	[HideInInspector]
-	public PlayerPawn _Pawn;
+	public PlayerPawn _PlayerPawn
+	{
+		get
+		{
+			return GetPlayerPawn ();
+		}
+	}
 
 	public List<Manager> _Managers = new List<Manager> ();
 
 	private Coroutine _FrameUpdater;
+
 
 	// Use this for initialization
 	void Awake ()
@@ -21,31 +26,14 @@ public class Game : MonoBehaviour
 
 		DontDestroyOnLoad (gameObject);
 
-		Debug.Assert (_Managers.TrueForAll (x =>
-		{
-			return x != null;
-		}));
+		_Managers.AddRange (transform.GetComponentsInChildren<Manager> ());
+
+		Init ();
 	}
 
-
-	/// <summary>
-	/// Called by StartLocation
-	/// </summary>
-	/// <param name="pawn">Pawn.</param>
-	public void Init (InitLevelData data)
+	public void Init ()
 	{
-		// Init me
-		_Pawn = data._Pawn;
-
-		// Init managers
-		InitLevelData model = new InitLevelData ();
-
-		model._Pawn = data._Pawn;
-
-		_Managers.ForEach (x =>
-		{
-			x.Init (model);
-		});
+		_Managers.ForEach (x => x.Init ());
 
 		// Start frame update
 		if (_FrameUpdater != null)
@@ -55,16 +43,48 @@ public class Game : MonoBehaviour
 		_FrameUpdater = StartCoroutine (FrameUpdate ());
 	}
 
-
+	/// <summary>
+	/// find first matching manager (each type of manager should only exists one)
+	/// </summary>
 	public T GetManager<T> () where T : Manager
 	{
-		return _Managers.FindAll (manager =>
-		{
-			return (manager as T) != null;
-		}) [0] as T;
+		return _Managers.FindAll (manager => (manager as T) != null) [0] as T;
 	}
 
-	
+	/// <summary>
+	/// Shortcut player pawn
+	/// </summary>
+	public PlayerPawn GetPlayerPawn ()
+	{
+		return Game.Instance.GetManager<PawnManager> ()._PlayerPawn;
+	}
+
+	/// <summary>
+	/// Shortcut event manager
+	/// </summary>
+	public void DispatchEvent (string eventString, EventData eventData = null)
+	{
+		GetManager<EventManager> ().InvokeEvent (eventString, eventData);
+	}
+
+	/// <summary>
+	/// Shortcut event manager
+	/// </summary>
+	public void AddEventListener (string eventString, EventCallback callback)
+	{
+		GetManager<EventManager> ().AddEventListener (eventString, callback);
+	}
+
+	/// <summary>
+	/// Shortcut event manager
+	/// </summary>
+	public void AddOnceEventListener (string eventString, EventCallback callback)
+	{
+		GetManager<EventManager> ().AddOnceEventListener (eventString, callback);
+	}
+
+
+
 	// Handle User Input
 	IEnumerator FrameUpdate ()
 	{
@@ -72,20 +92,25 @@ public class Game : MonoBehaviour
 		{
 			yield return null;
 
-			if (_Pawn == null)
+			if (Input.GetKey (KeyCode.V))
 			{
-				yield break;
+				Debug.Log (_PlayerPawn);
+			}
+
+			if (_PlayerPawn == null)
+			{
+				continue;
 			}
 
 			float x = Input.GetAxis ("Horizontal");
 			float z = Input.GetAxis ("Vertical");
 
-			_Pawn.Move (new Vector3 (x, 0, z));
+			_PlayerPawn.Move (new Vector3 (x, 0, z));
 
 			/// Control Attack
 			if (Input.GetKey (KeyCode.Space) || Input.GetKeyDown (KeyCode.Z))
 			{
-				_Pawn.Attack ();
+				_PlayerPawn.Attack ();
 			}
 		}
 	}

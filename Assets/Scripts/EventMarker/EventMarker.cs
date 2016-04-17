@@ -9,9 +9,10 @@ public abstract class EventMarker : MonoBehaviour
 	protected virtual void Start ()
 	{
 		Init ();
-
-		gameObject.SetActive (false);
 	}
 
+	/// <summary>
+	/// Use this instead of Start
+	/// </summary>
 	protected abstract void Init ();
 }
