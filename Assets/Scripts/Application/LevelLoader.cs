@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public sealed class LevelLoader : MonoBehaviour
 {
 	[SerializeField]
-	protected string[] _SceneNames;
+	private string[] _SceneNames;
 
 	private const string SCENE_ROOT_PATH = "Levels";
 
