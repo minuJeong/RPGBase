@@ -11,27 +11,49 @@ ModelImporter:
     100006: transform1
     100008: Pond
     100010: Terrain
+    100012: Town:Pond
+    100014: Town:Terrain
+    100016: Town:Town:Pond
+    100018: Town:Town:Terrain
+    100020: TownRNfosterParent1
     400000: //RootNode
     400002: polySurface1
     400004: polySurface2
     400006: transform1
     400008: Pond
     400010: Terrain
+    400012: Town:Pond
+    400014: Town:Terrain
+    400016: Town:Town:Pond
+    400018: Town:Town:Terrain
+    400020: TownRNfosterParent1
     2300000: //RootNode
     2300002: polySurface1
     2300004: polySurface2
     2300006: Pond
     2300008: Terrain
+    2300010: Town:Pond
+    2300012: Town:Terrain
+    2300014: Town:Town:Pond
+    2300016: Town:Town:Terrain
     3300000: //RootNode
     3300002: polySurface1
     3300004: polySurface2
     3300006: Pond
     3300008: Terrain
+    3300010: Town:Pond
+    3300012: Town:Terrain
+    3300014: Town:Town:Pond
+    3300016: Town:Town:Terrain
     4300000: Base
     4300002: polySurface1
     4300004: polySurface2
     4300006: Pond
     4300008: Terrain
+    4300010: Town:Pond
+    4300012: Town:Terrain
+    4300014: Town:Town:Pond
+    4300016: Town:Town:Terrain
   materials:
     importMaterials: 1
     materialName: 0
