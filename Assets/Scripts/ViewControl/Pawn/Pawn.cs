@@ -7,7 +7,8 @@ public abstract class Pawn : MonoBehaviour
 
 	protected const float ATTACK_MOTION_TIME = 0.35F;
 
-	protected NavMeshAgent _Motor;
+	// protected NavMeshAgent _Motor;
+	protected AstarMotor _Motor;
 
 	protected Animator _Mecanim;
 
@@ -27,7 +28,8 @@ public abstract class Pawn : MonoBehaviour
 
 	private void FindComponents ()
 	{
-		_Motor = GetComponent<NavMeshAgent> ();
+		// _Motor = GetComponent<NavMeshAgent> ();
+		_Motor = GetComponent<AstarMotor> ();
 
 		_Mecanim = GetComponentInChildren<Animator> ();
 	}

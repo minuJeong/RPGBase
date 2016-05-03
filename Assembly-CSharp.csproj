@@ -55,6 +55,9 @@
      <Compile Include="Assets\Scripts\EventMarker\StartLocation.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\Hud.cs" />
+     <Compile Include="Assets\Scripts\Logic\Pathfinding\AstarManager.cs" />
+     <Compile Include="Assets\Scripts\Logic\Pathfinding\AstarMotor.cs" />
+     <Compile Include="Assets\Scripts\Logic\Pathfinding\AstarTile.cs" />
      <Compile Include="Assets\Scripts\Manager\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Manager\EventManager.cs" />
      <Compile Include="Assets\Scripts\Manager\GateManager.cs" />

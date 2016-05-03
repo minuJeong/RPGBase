@@ -48,7 +48,14 @@ public class Game : MonoBehaviour
 	/// </summary>
 	public T GetManager<T> () where T : Manager
 	{
-		return _Managers.FindAll (manager => (manager as T) != null) [0] as T;
+		T result = _Managers.Find (manager => (manager as T) != null) as T;
+		if (result != null)
+		{
+			return result;
+		}
+
+		Debug.LogError ("Should not happen");
+		return null;
 	}
 
 	/// <summary>
@@ -92,26 +99,25 @@ public class Game : MonoBehaviour
 		{
 			yield return null;
 
-			if (Input.GetKey (KeyCode.V))
-			{
-				Debug.Log (_PlayerPawn);
-			}
-
 			if (_PlayerPawn == null)
 			{
 				continue;
 			}
 
+			/* keyboard input
 			float x = Input.GetAxis ("Horizontal");
 			float z = Input.GetAxis ("Vertical");
-
 			_PlayerPawn.Move (new Vector3 (x, 0, z));
+			*/
+
+
 
 			/// Control Attack
 			if (Input.GetKey (KeyCode.Space) || Input.GetKeyDown (KeyCode.Z))
 			{
 				_PlayerPawn.Attack ();
 			}
+
 		}
 	}
 }

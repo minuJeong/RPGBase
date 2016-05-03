@@ -30,7 +30,11 @@ public sealed class PawnManager : Manager
 		{
 			_PlayerPawn = SpawnPawn (_PlayerPawnPrefab) as PlayerPawn;
 
-			_PlayerPawn.transform.position = FindObjectOfType<StartLocation> ().transform.position;
+			StartLocation startLocation = FindObjectOfType<StartLocation> ();
+			if (startLocation != null)
+			{
+				_PlayerPawn.transform.position = startLocation.transform.position;
+			}
 		};
 
 		Game.Instance.AddEventListener (EventName.START_LEVEL, SpawnPlayerPawn);
