@@ -45,8 +45,7 @@ public sealed class AstarManager : Manager
 			if (!_Tiles.ContainsKey (tile.XZ))
 			{
 				_Tiles.Add (tile.XZ, tile);
-			}
-			else
+			} else
 			{
 				Debug.Log (string.Format ("Tile Duplicated: {0}, {1}", tile, _Tiles [tile.XZ]));
 			}
@@ -58,10 +57,16 @@ public sealed class AstarManager : Manager
 		Debug.Log ("Get Path To called");
 
 		List<AstarTile> paths = new List<AstarTile> ();
-
 		List<AstarTile> closeSet = new List<AstarTile> ();
 		List<AstarTile> openSet = new List<AstarTile> ();
 		AstarTile currentCursor = start;
+
+		// init pathfinding for tiles
+		var e = _Tiles.GetEnumerator ();
+		while (e.MoveNext ())
+		{
+			e.Current.Value.InitForPathfind ();
+		}
 
 		// open/close
 		Func<AstarTile, bool> open = (AstarTile cursor) =>
@@ -86,7 +91,7 @@ public sealed class AstarManager : Manager
 			closeSet.Add (cursor);
 		};
 
-		// Scoring
+		// Heuristic scoring
 		Func<AstarTile, float> G = (AstarTile cursor) => Vector2.Distance (cursor.XZ, start.XZ);
 		Func<AstarTile, float> H = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);
 		Func<AstarTile, float> F = (AstarTile cursor) => G (cursor) + H (cursor);
@@ -166,34 +171,27 @@ public sealed class AstarManager : Manager
 			return EXPAND_RESULT.CONTINUE;
 		};
 
-
 		open (start);
 		int escape = 30;
 		while (expand (currentCursor) == EXPAND_RESULT.CONTINUE)
 		{
 			Debug.Log ("PATH_EXPANDING......");
 
-			Debug.Break ();
-
 			if (escape-- == 0)
 			{
 				Debug.Log ("Safe Escape");
+
 				paths.Clear ();
 				return paths;
 			}
 		}
 
-		Action<AstarTile> pathsCatcher;
-		pathsCatcher = (AstarTile tile) =>
+		AstarTile cursorTile = destination;
+		while (cursorTile != null)
 		{
-			Debug.Log ("Catching Path");
-			paths.Add (tile);
-			if (tile.PathParent != null)
-			{
-				pathsCatcher (tile.PathParent);
-			}
-		};
-		pathsCatcher (destination);
+			paths.Add (cursorTile);
+			cursorTile = cursorTile.PathParent;
+		}
 		paths.Reverse ();
 
 		return paths;
@@ -226,9 +224,7 @@ public sealed class AstarManager : Manager
 				{
 					closestDistance = distance;
 					closestTile = _Tiles [e.Current];
-				}
-				else
-				if (distance < closestDistance)
+				} else if (distance < closestDistance)
 				{
 					closestDistance = distance;
 					closestTile = _Tiles [e.Current];

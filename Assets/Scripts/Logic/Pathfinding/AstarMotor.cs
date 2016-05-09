@@ -8,6 +8,7 @@ public class AstarMotor : MonoBehaviour
 	public float Speed = 1.0F;
 	public float StopDistance = 0.1F;
 
+	// public for debug
 	public List<AstarTile> Path;
 
 	// private
@@ -26,6 +27,8 @@ public class AstarMotor : MonoBehaviour
 	/// <param name="toPos">To position.</param>
 	public void SetDestination (Vector3 toPos)
 	{
+		Path.Clear ();
+
 		if (_CoroutineMovement != null)
 		{
 			StopCoroutine (_CoroutineMovement);
@@ -35,7 +38,6 @@ public class AstarMotor : MonoBehaviour
 		if (Vector3.Distance (transform.position, toPos) < StopDistance)
 		{
 			transform.position = toPos;
-			Path.Clear ();
 			return;
 		}
 
@@ -46,10 +48,17 @@ public class AstarMotor : MonoBehaviour
 
 	IEnumerator Movement ()
 	{
-		Debug.Log("Start movement");
+		Debug.Log ("Start movement");
+
+		// Path is not set
+		if (Path == null || Path.Count == 0)
+		{
+			yield break;
+		}
 
 		Queue<AstarTile> movePath = new Queue<AstarTile> ();
 		Path.ForEach (movePath.Enqueue);
+
 		AstarTile target = movePath.Dequeue ();
 
 		while (true)
@@ -61,20 +70,19 @@ public class AstarMotor : MonoBehaviour
 			if (delta.magnitude < StopDistance)
 			{
 				transform.position = target.transform.position;
-
 				if (movePath.Count == 0)
 				{
-					Debug.Log("MovePath count == 0");
-
-					break;
-				}
-				else
+					yield break;
+				} else
 				{
 					target = movePath.Dequeue ();
 				}
+
+				continue;
 			}
 
 			transform.position += delta.normalized * Time.deltaTime * Speed;
+			transform.forward = delta;
 		}
 	}
 

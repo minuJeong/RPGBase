@@ -121,6 +121,18 @@ public class Game : MonoBehaviour
 						continue;
 					}
 
+					new List<AstarTile> (GameObject.FindObjectsOfType<AstarTile> ()).ForEach (x =>
+					{
+						new List<MeshRenderer> (x.GetComponentsInChildren<MeshRenderer> ()).ForEach (y =>
+						{
+							y.material.color = Color.white;
+						});
+					});
+					new List<MeshRenderer> (hit.collider.GetComponentsInChildren<MeshRenderer> ()).ForEach (x =>
+					{
+						x.material.color = Color.red;
+					});
+
 					Vector3 hitPos = hit.point;
 					hitPos.y = 0.0F;
 					_PlayerPawn.MoveTo (hitPos);

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class AstarTile : MonoBehaviour
 {
+	// for display in inspector
 	public Vector2 DEBUG_XZ;
-
 
 	public bool IsWalkable = true;
 	public AstarTile PathParent = null;
@@ -33,8 +33,14 @@ public class AstarTile : MonoBehaviour
 		}
 	}
 
+	public void InitForPathfind ()
+	{
+		PathParent = null;
+	}
+
 	void Start ()
 	{
 		DEBUG_XZ = XZ;
+		gameObject.name = "tile" + X.ToString () + ", " + Z.ToString ();
 	}
 }
