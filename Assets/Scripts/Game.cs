@@ -110,9 +110,24 @@ public class Game : MonoBehaviour
 			_PlayerPawn.Move (new Vector3 (x, 0, z));
 			*/
 
+			if (Input.GetMouseButtonDown (0))
+			{
+				Ray ray = GetManager<CameraManager> ().MainCamera.ScreenPointToRay (Input.mousePosition);
+				RaycastHit hit;
+				if (Physics.Raycast (ray, out hit))
+				{
+					if (hit.collider.GetComponent<AstarTile> () == null)
+					{
+						continue;
+					}
 
+					Vector3 hitPos = hit.point;
+					hitPos.y = 0.0F;
+					_PlayerPawn.MoveTo (hitPos);
+				}
+			}
 
-			/// Control Attack
+			// Control Attack
 			if (Input.GetKey (KeyCode.Space) || Input.GetKeyDown (KeyCode.Z))
 			{
 				_PlayerPawn.Attack ();

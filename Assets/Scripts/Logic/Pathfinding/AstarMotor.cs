@@ -46,8 +46,10 @@ public class AstarMotor : MonoBehaviour
 
 	IEnumerator Movement ()
 	{
+		Debug.Log("Start movement");
+
 		Queue<AstarTile> movePath = new Queue<AstarTile> ();
-		Path.ForEach ((AstarTile tile) => movePath.Enqueue (tile));
+		Path.ForEach (movePath.Enqueue);
 		AstarTile target = movePath.Dequeue ();
 
 		while (true)
@@ -62,12 +64,13 @@ public class AstarMotor : MonoBehaviour
 
 				if (movePath.Count == 0)
 				{
-					target = null;
-					yield break;
-				} else
+					Debug.Log("MovePath count == 0");
+
+					break;
+				}
+				else
 				{
 					target = movePath.Dequeue ();
-					continue;
 				}
 			}
 

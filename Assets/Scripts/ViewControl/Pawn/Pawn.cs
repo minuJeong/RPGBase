@@ -46,7 +46,12 @@ public abstract class Pawn : MonoBehaviour
 			return;
 		}
 
-		_Motor.SetDestination (transform.position + direction);
+		MoveTo (transform.position + direction);
+	}
+
+	public void MoveTo (Vector3 point)
+	{
+		_Motor.SetDestination (point);
 	}
 
 	public void Attack ()

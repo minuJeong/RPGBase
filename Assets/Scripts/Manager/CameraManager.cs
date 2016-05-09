@@ -22,6 +22,30 @@ public sealed class CameraManager : Manager
 		}
 	}
 
+	Camera _MainCamera;
+
+	public Camera MainCamera
+	{
+		get
+		{
+			if (_MainCamera == null)
+			{
+				_MainCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
+				if (_MainCamera == null)
+				{
+					Debug.LogWarning ("Can't find main camera object. using temporary object.");
+
+					GameObject container = new GameObject ("MainCamera", typeof(Camera));
+					container.transform.SetParent (transform);
+
+					Debug.Assert (_MainCamera != null);
+				}
+			}
+
+			return _MainCamera;
+		}
+	}
+
 	Coroutine _Updater;
 
 	protected override void OnInit ()

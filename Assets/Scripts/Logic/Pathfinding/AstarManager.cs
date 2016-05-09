@@ -45,44 +45,18 @@ public sealed class AstarManager : Manager
 			if (!_Tiles.ContainsKey (tile.XZ))
 			{
 				_Tiles.Add (tile.XZ, tile);
-			} else
+			}
+			else
 			{
 				Debug.Log (string.Format ("Tile Duplicated: {0}, {1}", tile, _Tiles [tile.XZ]));
 			}
 		});
-
-		int minX = int.MaxValue;
-		int maxX = int.MinValue;
-		int minZ = int.MaxValue;
-		int maxZ = int.MinValue;
-
-		// Get boundaries
-		Dictionary<Vector2, AstarTile>.ValueCollection.Enumerator tileE = _Tiles.Values.GetEnumerator ();
-
-		while (tileE.MoveNext ())
-		{
-			AstarTile tile = tileE.Current;
-
-			if (tile.X < minX)
-			{
-				minX = tile.X;
-			} else if (tile.X > maxX)
-			{
-				maxX = tile.X;
-			}
-
-			if (tile.Z < minZ)
-			{
-				minZ = tile.Z;
-			} else if (tile.Z > maxZ)
-			{
-				maxZ = tile.Z;
-			}
-		}
 	}
 
 	public List<AstarTile> GetPathTo (AstarTile start, AstarTile destination)
 	{
+		Debug.Log ("Get Path To called");
+
 		List<AstarTile> paths = new List<AstarTile> ();
 
 		List<AstarTile> closeSet = new List<AstarTile> ();
@@ -112,22 +86,10 @@ public sealed class AstarManager : Manager
 			closeSet.Add (cursor);
 		};
 
-
 		// Scoring
-		Func<AstarTile, float> G = (AstarTile cursor) =>
-		{
-			return Vector2.Distance (cursor.XZ, start.XZ);
-		};
-
-		Func<AstarTile, float> H = (AstarTile cursor) =>
-		{
-			return Vector2.Distance (cursor.XZ, destination.XZ);
-		};
-
-		Func<AstarTile, float> F = (AstarTile cursor) =>
-		{
-			return G (cursor) + H (cursor);
-		};
+		Func<AstarTile, float> G = (AstarTile cursor) => Vector2.Distance (cursor.XZ, start.XZ);
+		Func<AstarTile, float> H = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);
+		Func<AstarTile, float> F = (AstarTile cursor) => G (cursor) + H (cursor);
 
 		Func<AstarTile, EXPAND_RESULT> expand = (AstarTile cursor) =>
 		{
@@ -206,19 +168,25 @@ public sealed class AstarManager : Manager
 
 
 		open (start);
-		int escape = 100;
+		int escape = 30;
 		while (expand (currentCursor) == EXPAND_RESULT.CONTINUE)
 		{
+			Debug.Log ("PATH_EXPANDING......");
+
+			Debug.Break ();
+
 			if (escape-- == 0)
 			{
 				Debug.Log ("Safe Escape");
-				break;
+				paths.Clear ();
+				return paths;
 			}
 		}
 
 		Action<AstarTile> pathsCatcher;
 		pathsCatcher = (AstarTile tile) =>
 		{
+			Debug.Log ("Catching Path");
 			paths.Add (tile);
 			if (tile.PathParent != null)
 			{
@@ -258,7 +226,9 @@ public sealed class AstarManager : Manager
 				{
 					closestDistance = distance;
 					closestTile = _Tiles [e.Current];
-				} else if (distance < closestDistance)
+				}
+				else
+				if (distance < closestDistance)
 				{
 					closestDistance = distance;
 					closestTile = _Tiles [e.Current];
