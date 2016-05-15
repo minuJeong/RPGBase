@@ -83,11 +83,10 @@ public sealed class AstarManager : Manager
 		};
 
 		// Heuristic scoring
-		Func<AstarTile, float> G = (AstarTile cursor) => Vector2.Distance (cursor.XZ, start.XZ);
-		Func<AstarTile, float> H = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);
-
+		// Func<AstarTile, float> G = (AstarTile cursor) => Vector2.Distance (cursor.XZ, start.XZ);
+		// Func<AstarTile, float> H = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);
 		// Func<AstarTile, float> F = (AstarTile cursor) => G (cursor) + H (cursor);
-		Func<AstarTile, float> F = H;
+		Func<AstarTile, float> F = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);;
 
 		Func<AstarTile, EXPAND_RESULT> expand = (AstarTile cursor) =>
 		{
@@ -152,6 +151,8 @@ public sealed class AstarManager : Manager
 				return EXPAND_RESULT.BLOCKED;
 			}
 
+
+			// calculate heuristics: different from Dijkstra
 			float minScore = float.MaxValue;
 			AstarTile minTile = currentCursor;
 			openSet.ForEach ((AstarTile tile) =>

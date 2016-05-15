@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\Manager\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager.cs" />
      <Compile Include="Assets\Scripts\Manager\PawnManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\WorldUIManager.cs" />
      <Compile Include="Assets\Scripts\Tag.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\AnimControl\PawnControl.cs" />
      <Compile Include="Assets\Scripts\ViewControl\Pawn\EnemyPawn.cs" />

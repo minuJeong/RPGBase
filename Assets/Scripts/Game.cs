@@ -91,8 +91,6 @@ public class Game : MonoBehaviour
 		GetManager<EventManager> ().AddOnceEventListener (eventString, callback);
 	}
 
-
-
 	// Handle User Input
 	IEnumerator FrameUpdate ()
 	{
@@ -126,9 +124,7 @@ public class Game : MonoBehaviour
 						continue;
 					}
 
-					Vector3 hitPos = hit.point;
-					hitPos.y = 0.0F;
-					_PlayerPawn.MoveTo (hitPos);
+					CommandMove (hit.point);
 				}
 			}
 
@@ -139,5 +135,16 @@ public class Game : MonoBehaviour
 			}
 
 		}
+	}
+
+	void CommandMove (Vector3 point)
+	{
+		// Show WorldUI
+
+		
+		
+		// Pawn MoveTo point
+		point.y = 0.0F;
+		_PlayerPawn.MoveTo (point);
 	}
 }

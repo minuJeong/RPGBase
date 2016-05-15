@@ -3,11 +3,6 @@ using UnityEditor;
 using System.Collections;
 
 
-[InitializeOnLoad]
-class EditorExtension
+public class EditorExtension : Editor
 {
-	static EditorExtension ()
-	{
-		
-	}
 }
