@@ -39,13 +39,11 @@ public sealed class AstarManager : Manager
 		_Tiles = new Dictionary<Vector2, AstarTile> ();
 		new List<AstarTile> (FindObjectsOfType<AstarTile> ()).ForEach ((AstarTile tile) =>
 		{
-			// reset path parent
-			tile.PathParent = null;
-
 			if (!_Tiles.ContainsKey (tile.XZ))
 			{
 				_Tiles.Add (tile.XZ, tile);
-			} else
+			}
+			else
 			{
 				Debug.Log (string.Format ("Tile Duplicated: {0}, {1}", tile, _Tiles [tile.XZ]));
 			}
@@ -54,19 +52,12 @@ public sealed class AstarManager : Manager
 
 	public List<AstarTile> GetPathTo (AstarTile start, AstarTile destination)
 	{
-		Debug.Log ("Get Path To called");
+		var parentMap = new Dictionary<AstarTile, AstarTile> ();
+		var paths = new List<AstarTile> ();
+		var closeSet = new List<AstarTile> ();
+		var openSet = new List<AstarTile> ();
 
-		List<AstarTile> paths = new List<AstarTile> ();
-		List<AstarTile> closeSet = new List<AstarTile> ();
-		List<AstarTile> openSet = new List<AstarTile> ();
 		AstarTile currentCursor = start;
-
-		// init pathfinding for tiles
-		var e = _Tiles.GetEnumerator ();
-		while (e.MoveNext ())
-		{
-			e.Current.Value.InitForPathfind ();
-		}
 
 		// open/close
 		Func<AstarTile, bool> open = (AstarTile cursor) =>
@@ -94,7 +85,9 @@ public sealed class AstarManager : Manager
 		// Heuristic scoring
 		Func<AstarTile, float> G = (AstarTile cursor) => Vector2.Distance (cursor.XZ, start.XZ);
 		Func<AstarTile, float> H = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);
-		Func<AstarTile, float> F = (AstarTile cursor) => G (cursor) + H (cursor);
+
+		// Func<AstarTile, float> F = (AstarTile cursor) => G (cursor) + H (cursor);
+		Func<AstarTile, float> F = H;
 
 		Func<AstarTile, EXPAND_RESULT> expand = (AstarTile cursor) =>
 		{
@@ -139,7 +132,12 @@ public sealed class AstarManager : Manager
 
 				if (_Tiles.ContainsKey (nCursor))
 				{
-					_Tiles [nCursor].PathParent = currentCursor;
+					var previousTile = _Tiles [nCursor];
+					if (!parentMap.ContainsKey (previousTile))
+					{
+						parentMap.Add (previousTile, currentCursor);
+					}
+
 					isDestination = open (_Tiles [nCursor]);
 				}
 			});
@@ -175,22 +173,23 @@ public sealed class AstarManager : Manager
 		int escape = 200;
 		while (expand (currentCursor) == EXPAND_RESULT.CONTINUE)
 		{
-			Debug.Log ("PATH_EXPANDING......");
-
 			if (escape-- == 0)
 			{
-				Debug.Log ("Safe Escape");
+				Debug.LogWarning ("Safe Escape Expanding");
 
 				paths.Clear ();
 				return paths;
 			}
 		}
 
+		// return result
 		AstarTile cursorTile = destination;
-		while (cursorTile != null)
+
+		paths.Add (destination);
+		while (parentMap.ContainsKey (cursorTile))
 		{
+			cursorTile = parentMap [cursorTile];
 			paths.Add (cursorTile);
-			cursorTile = cursorTile.PathParent;
 		}
 		paths.Reverse ();
 
@@ -224,7 +223,9 @@ public sealed class AstarManager : Manager
 				{
 					closestDistance = distance;
 					closestTile = _Tiles [e.Current];
-				} else if (distance < closestDistance)
+				}
+				else
+				if (distance < closestDistance)
 				{
 					closestDistance = distance;
 					closestTile = _Tiles [e.Current];

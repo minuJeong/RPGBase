@@ -8,17 +8,17 @@ public class AstarMotor : MonoBehaviour
 	public float Speed = 1.0F;
 	public float StopDistance = 0.1F;
 
-	// public for debug
-	public List<AstarTile> Path;
-
 	// private
 	AstarManager _AstarManager;
+
+	List<AstarTile> Path;
 
 	Coroutine _CoroutineMovement;
 
 	void Start ()
 	{
 		_AstarManager = Game.Instance.GetManager<AstarManager> ();
+		Path = new List<AstarTile> ();
 	}
 
 	/// <summary>
@@ -48,8 +48,6 @@ public class AstarMotor : MonoBehaviour
 
 	IEnumerator Movement ()
 	{
-		Debug.Log ("Start movement");
-
 		// Path is not set
 		if (Path == null || Path.Count == 0)
 		{
@@ -73,7 +71,8 @@ public class AstarMotor : MonoBehaviour
 				if (movePath.Count == 0)
 				{
 					yield break;
-				} else
+				}
+				else
 				{
 					target = movePath.Dequeue ();
 				}

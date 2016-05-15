@@ -7,7 +7,6 @@ public class AstarTile : MonoBehaviour
 	public Vector2 DEBUG_XZ;
 
 	public bool IsWalkable = true;
-	public AstarTile PathParent = null;
 
 	public Vector2 XZ
 	{
@@ -31,11 +30,6 @@ public class AstarTile : MonoBehaviour
 		{ 
 			return (int)transform.position.z;
 		}
-	}
-
-	public void InitForPathfind ()
-	{
-		PathParent = null;
 	}
 
 	void Start ()

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -104,10 +105,14 @@ public class Game : MonoBehaviour
 				continue;
 			}
 
-			/* keyboard input
+			/*
+			 * When using this, you better use nav mesh agent for pawn
 			float x = Input.GetAxis ("Horizontal");
 			float z = Input.GetAxis ("Vertical");
-			_PlayerPawn.Move (new Vector3 (x, 0, z));
+			if (x * x + z * z > 0.0F)
+			{
+				_PlayerPawn.Move (new Vector3 (x, 0, z));
+			}
 			*/
 
 			if (Input.GetMouseButtonDown (0))
@@ -120,18 +125,6 @@ public class Game : MonoBehaviour
 					{
 						continue;
 					}
-
-					new List<AstarTile> (GameObject.FindObjectsOfType<AstarTile> ()).ForEach (x =>
-					{
-						new List<MeshRenderer> (x.GetComponentsInChildren<MeshRenderer> ()).ForEach (y =>
-						{
-							y.material.color = Color.white;
-						});
-					});
-					new List<MeshRenderer> (hit.collider.GetComponentsInChildren<MeshRenderer> ()).ForEach (x =>
-					{
-						x.material.color = Color.red;
-					});
 
 					Vector3 hitPos = hit.point;
 					hitPos.y = 0.0F;

@@ -6,11 +6,12 @@ using System.Collections.Generic;
 
 public sealed class PawnManager : Manager
 {
-	[SerializeField]
-	PlayerPawn _PlayerPawnPrefab;
+	public PlayerPawn _PlayerPawnPrefab;
 
+	[HideInInspector]
 	public PlayerPawn _PlayerPawn;
 
+	[HideInInspector]
 	public List<Pawn> _AllPawns = new List<Pawn> ();
 
 

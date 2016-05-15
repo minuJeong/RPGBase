@@ -1,14 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Manager/CameraManager.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/Scripts/ViewControl/Pawn/Pawn.cs" Line="55" Column="4" />
-      <File FileName="Assets/Scripts/Game.cs" Line="115" Column="26" />
+      <File FileName="Assets/Scripts/ViewControl/Pawn/Pawn.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Game.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Application/LevelLoader.cs" Line="1" Column="1" />
       <File FileName="Assets/Editor/MenuTools.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Manager/PawnManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Manager/CameraManager.cs" Line="36" Column="79" />
+      <File FileName="Assets/Scripts/Manager/CameraManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Manager/EventManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Logic/Pathfinding/AstarManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Logic/Pathfinding/AstarMotor.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
