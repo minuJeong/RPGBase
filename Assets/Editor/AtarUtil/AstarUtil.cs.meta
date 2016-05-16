@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: bb99312aa3c5b44fcb619aa39f40cdfd
-timeCreated: 1463320625
+guid: ff89a83acc1db4f2682487cf5b60f0f6
+timeCreated: 1463322437
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - _ButtonTexture: {fileID: 2800000, guid: 70543140187ed4631957c42851446022, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

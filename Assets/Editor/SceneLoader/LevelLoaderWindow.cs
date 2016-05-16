@@ -19,6 +19,22 @@ public class LevelLoaderWindow : EditorWindow
 
 	void OnGUI ()
 	{
+		// Style Defs
+		GUIStyle labelStyle_Title_1 = new GUIStyle ();
+		labelStyle_Title_1.fontSize = 14;
+		labelStyle_Title_1.margin = new RectOffset (10, 0, 15, 3);
+
+		GUIStyle labelStyle_Title_2 = new GUIStyle ();
+		labelStyle_Title_2.fontSize = 12;
+		labelStyle_Title_2.margin = new RectOffset (15, 0, 5, 2);
+
+
+		// Title
+		GUILayout.Label ("Level Loader", labelStyle_Title_1);
+
+
+		// System Levels
+		GUILayout.Label ("System Levels", labelStyle_Title_2);
 		if (GUILayout.Button ("Singleton"))
 		{
 			EditorSceneManager.OpenScene (SINGLETON_PATH, OpenSceneMode.Single);
@@ -28,7 +44,10 @@ public class LevelLoaderWindow : EditorWindow
 		{
 			EditorSceneManager.OpenScene (FRONTEND_PATH, OpenSceneMode.Single);
 		}
-			
+
+
+		// Normal Levels
+		GUILayout.Label ("Normal Levels", labelStyle_Title_2);
 		var scenes = new List<string> (Directory.GetFiles (SCENE_PATH, "*.unity"));
 		scenes.ForEach (path =>
 		{
