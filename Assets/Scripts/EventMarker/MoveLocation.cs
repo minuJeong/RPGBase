@@ -21,6 +21,11 @@ public class MoveLocation : EventMarker
 
 	void OnTriggerEnter (Collider other)
 	{
+		if (other.GetComponent<PlayerPawn> () == null)
+		{
+			return;
+		}
+
 		Game.Instance.DispatchEvent (EventName.MOVE_TO, new MoveToEventData (_ToScene, _ToGate));
 	}
 }
