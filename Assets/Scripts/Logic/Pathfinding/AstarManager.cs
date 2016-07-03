@@ -137,12 +137,18 @@ public sealed class AstarManager : Manager
 				if (_Tiles.ContainsKey (nCursor))
 				{
 					var previousTile = _Tiles [nCursor];
-					if (!parentMap.ContainsKey (previousTile))
+
+					if (!previousTile.IsWalkable)
 					{
-						parentMap.Add (previousTile, currentCursor);
+						return;
 					}
 
-					isDestination |= open (_Tiles [nCursor]);
+					if (!parentMap.ContainsKey (previousTile))
+					{
+						parentMap.Add (previousTile, cursor);
+					}
+
+					isDestination |= open (previousTile);
 				}
 			});
 

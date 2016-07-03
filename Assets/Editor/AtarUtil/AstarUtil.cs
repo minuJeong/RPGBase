@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +16,8 @@ public class AstarUtil : EditorWindow
 
 	void OnGUI ()
 	{
+		Scene currentScene = SceneManager.GetActiveScene ();
+
 		const float BUTTON_WIDTH = 220;
 		const float BUTTON_HEIGHT = 32;
 
@@ -24,8 +28,10 @@ public class AstarUtil : EditorWindow
 			Array.ForEach (tiles, tile =>
 			{
 				tile.gameObject.name = "Tile_" + tile.XZ;
+				EditorUtility.SetDirty (tile);
 			});
 
+			EditorSceneManager.MarkSceneDirty (currentScene);
 			EditorUtility.DisplayDialog ("Message", "Rename Complete", "Ok");
 		}
 
@@ -49,6 +55,7 @@ public class AstarUtil : EditorWindow
 				}
 			});
 
+			EditorSceneManager.MarkSceneDirty (currentScene);
 			var message = string.Format ("Duplicate Inspect Complete, Errors: {0}", ErrorCount);
 			EditorUtility.DisplayDialog ("Message", message, "Ok");
 		}
@@ -58,8 +65,10 @@ public class AstarUtil : EditorWindow
 			Array.ForEach (tiles, tile =>
 			{
 				tile.IsWalkable = true;
+				EditorUtility.SetDirty (tile);
 			});
 
+			EditorSceneManager.MarkSceneDirty (currentScene);
 			EditorUtility.DisplayDialog ("Message", "Reset Complete", "Ok");
 		}
 
@@ -68,16 +77,36 @@ public class AstarUtil : EditorWindow
 			Action<AstarObstacle> SetUnPassable = (obstacle) =>
 			Array.ForEach (tiles, tile =>
 			{
-				Bounds b = tile.GetComponent<Collider> ().bounds;
-				b.SetMinMax (b.min + Vector3.up, b.max + Vector3.up);
-				if (obstacle.GetComponent<Collider> ().bounds.Intersects (b))
+				Bounds b_obs = obstacle.GetComponent<Collider> ().bounds;
+				Bounds b_tile = tile.GetComponent<Collider> ().bounds;
+				Vector3 tileMin = b_tile.min;
+				Vector3 tileMax = b_tile.max;
+				float tileY = tile.transform.position.y;
+				
+				tileMin.y = tileY;
+				tileMax.y = tileY;
+				Vector3[] corners = new Vector3[] {
+					tileMin,
+					new Vector3 (tileMin.x, tileY, tileMax.z),
+					new Vector3 (tileMax.x, tileY, tileMin.z),
+					tileMax
+				};
+				
+				Array.ForEach (corners, corner =>
 				{
-					tile.IsWalkable = false;
-				}
+					Ray tileRay = new Ray (corner, Vector3.up);
+					if (b_obs.IntersectRay (tileRay))
+					{
+						tile.IsWalkable = false;
+					}
+				});
+				
+				EditorUtility.SetDirty (tile);
 			});
 			
 			Array.ForEach (FindObjectsOfType<AstarObstacle> (), SetUnPassable);
 
+			EditorSceneManager.MarkSceneDirty (currentScene);
 			EditorUtility.DisplayDialog ("Message", "Bake Complete", "Ok");
 		}
 
@@ -86,8 +115,10 @@ public class AstarUtil : EditorWindow
 			Array.ForEach (tiles, tile =>
 			{
 				tile.transform.position = new Vector3 (tile.X, tile.transform.position.y, tile.Z);
+				EditorUtility.SetDirty (tile);
 			});
 
+			EditorSceneManager.MarkSceneDirty (currentScene);
 			EditorUtility.DisplayDialog ("Message", "Normalize Complete", "Ok");
 		}
 	}
