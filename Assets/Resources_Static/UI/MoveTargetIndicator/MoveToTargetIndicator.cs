@@ -15,7 +15,8 @@ public class MoveToTargetIndicator : MonoBehaviour
 		Debug.Assert (TargetRenderer != null);
 
 		_TargetMaterial = TargetRenderer.material;
-		TargetRenderer.transform.DOScale (new Vector3 (0, 0, 0), 1.0F);
+		TargetRenderer.transform.DOScaleY (0.001F, 1.0F).SetEase(Ease.OutQuart);
+		TargetRenderer.transform.DOMoveY (0.001F, 1.0F).SetEase(Ease.OutQuart);
 	}
 	
 	// Update is called once per frame

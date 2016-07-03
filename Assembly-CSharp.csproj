@@ -112,6 +112,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Ceil\SFN_Ceil.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_POS.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_AmbientLight\SFN_AmbientLight.shader" />
+     <None Include="Assets\Resources_Static\Env\Blocky\Materials\Top.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG10.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC2.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VertexColor\SFN_VertexColor.shader" />
@@ -143,6 +144,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ArcTan2\SFN_ArcTan2_ZTOW.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_PIV_SPD_ANG.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ReadPackedData.shader" />
+     <None Include="Assets\Resources_Static\Env\Blocky\Materials\Side.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_UV_DEP_REF.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_If\SFN_If.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_FaceSign\SFN_FaceSign.shader" />
@@ -277,20 +279,20 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
  <Reference Include="DOTween46">
  <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
  <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween50.dll</HintPath>
- </Reference>
- <Reference Include="DemiLib">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
- </Reference>
- <Reference Include="DOTween43">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween43.dll</HintPath>
- </Reference>
- <Reference Include="DOTween">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenPro">
  <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>

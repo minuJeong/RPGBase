@@ -89,7 +89,8 @@ public class AstarUtil : EditorWindow
 					tileMin,
 					new Vector3 (tileMin.x, tileY, tileMax.z),
 					new Vector3 (tileMax.x, tileY, tileMin.z),
-					tileMax
+					tileMax,
+					tile.transform.position
 				};
 				
 				Array.ForEach (corners, corner =>
@@ -120,6 +121,14 @@ public class AstarUtil : EditorWindow
 
 			EditorSceneManager.MarkSceneDirty (currentScene);
 			EditorUtility.DisplayDialog ("Message", "Normalize Complete", "Ok");
+		}
+
+		GUILayout.Space (10);
+
+		if (GUILayout.Button ("Replace Selected Tiles", GUILayout.Width (BUTTON_WIDTH), GUILayout.Height (BUTTON_HEIGHT)))
+		{
+			ScriptableObject.CreateInstance<ReplaceTiles> ().Show ();
+			EditorSceneManager.MarkSceneDirty (currentScene);
 		}
 	}
 }

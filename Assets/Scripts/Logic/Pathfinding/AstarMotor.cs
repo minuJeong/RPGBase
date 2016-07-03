@@ -81,7 +81,10 @@ public class AstarMotor : MonoBehaviour
 			}
 
 			transform.position += delta.normalized * Time.smoothDeltaTime * Speed;
-			transform.forward = delta;
+
+			Vector3 forwardDelta = delta;
+			forwardDelta.y = 0.0F;
+			transform.forward = forwardDelta;
 		}
 	}
 

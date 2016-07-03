@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\AtarUtil\AstarUtil.cs" />
+     <Compile Include="Assets\Editor\AtarUtil\ReplaceTiles.cs" />
      <Compile Include="Assets\Editor\EditorExtension.cs" />
      <Compile Include="Assets\Editor\MenuTools.cs" />
      <Compile Include="Assets\Editor\SceneLoader\LevelLoaderWindow.cs" />
@@ -86,6 +87,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Ceil\SFN_Ceil.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_POS.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_AmbientLight\SFN_AmbientLight.shader" />
+     <None Include="Assets\Resources_Static\Env\Blocky\Materials\Top.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG10.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC2.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VertexColor\SFN_VertexColor.shader" />
@@ -117,6 +119,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ArcTan2\SFN_ArcTan2_ZTOW.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_PIV_SPD_ANG.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\Common\ReadPackedData.shader" />
+     <None Include="Assets\Resources_Static\Env\Blocky\Materials\Side.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_UV_DEP_REF.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_If\SFN_If.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_FaceSign\SFN_FaceSign.shader" />
@@ -269,6 +272,33 @@
  <Reference Include="UnityEditor.TreeEditor">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiEditor">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenEditor">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenProEditor">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+ </Reference>
  <Reference Include="ShaderForge">
  <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/ShaderForge/Editor/ShaderForge.dll</HintPath>
  </Reference>
@@ -289,33 +319,6 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenEditor">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
- </Reference>
- <Reference Include="DOTween46">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween46.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenProEditor">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
- </Reference>
- <Reference Include="DOTween50">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween50.dll</HintPath>
- </Reference>
- <Reference Include="DemiLib">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
- </Reference>
- <Reference Include="DemiEditor">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
- </Reference>
- <Reference Include="DOTween43">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween43.dll</HintPath>
- </Reference>
- <Reference Include="DOTween">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween.dll</HintPath>
- </Reference>
- <Reference Include="DOTweenPro">
- <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

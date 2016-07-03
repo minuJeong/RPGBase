@@ -182,7 +182,7 @@ public sealed class AstarManager : Manager
 		};
 
 		open (start);
-		int escape = 500;
+		int escape = 200;
 		while (expand (currentCursor) == EXPAND_RESULT.CONTINUE)
 		{
 			if (escape-- == 0)
