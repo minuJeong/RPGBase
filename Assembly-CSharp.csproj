@@ -51,6 +51,7 @@
      <Compile Include="Assets\Resources_Static\AllStarCharacterLibrary\Scripts\Outfitter.cs" />
      <Compile Include="Assets\Resources_Static\AllStarCharacterLibrary\Scripts\RootMotionOff.cs" />
      <Compile Include="Assets\Resources_Static\AllStarCharacterLibrary\Scripts\SkinnedMeshCombiner.cs" />
+     <Compile Include="Assets\Resources_Static\Pawn\TestPawn\PlayerPawn_View_AnimParams.cs" />
      <Compile Include="Assets\Scripts\Application\FrontEnd.cs" />
      <Compile Include="Assets\Scripts\Application\LevelLoader.cs" />
      <Compile Include="Assets\Scripts\DataModel.cs" />

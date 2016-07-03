@@ -26,7 +26,6 @@ public class PlayerPawn_View_AnimParams : MonoBehaviour
 	{
 		Vector3 delta = transform.position - _LastPosition;
 		_Mecanim.SetFloat ("MoveSpeed", delta.magnitude / Time.deltaTime);
-		Debug.Log (delta.magnitude / Time.deltaTime);
 	}
 
 	void _UpdatePosition ()
