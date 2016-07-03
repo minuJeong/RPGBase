@@ -50,6 +50,7 @@
      <Compile Include="Assets\Editor\MenuTools.cs" />
      <Compile Include="Assets\Editor\SceneLoader\LevelLoaderWindow.cs" />
      <Compile Include="Assets\Resources_Static\AllStarCharacterLibrary\Scripts\Editor\TurnOffRenderers.cs" />
+     <Compile Include="Assets\Scripts\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
      <Compile Include="Assets\Scripts\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeInspector.cs" />
      <Compile Include="Assets\Scripts\ShaderForge\Editor\InternalResources\Inspectors\ShaderForgeMaterialInspector.cs" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
@@ -60,6 +61,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Matrix4x4\SFN_Matrix4x4.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG2.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Clamp01\SFN_Clamp01.shader" />
+     <None Include="Assets\Scripts\Demigiant\DOTweenPro\readme.txt" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_SPD_ANG.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Screen.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RemapRangeAdvanced\SFN_RemapRangeAdvanced.shader" />
@@ -75,6 +77,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Panner\SFN_Panner_DIST.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Log\SFN_Log_LOG.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Transpose\SFN_Transpose.shader" />
+     <None Include="Assets\Scripts\Demigiant\DemiLib\Core\DemiLib.xml" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_RgbToHsv\SFN_RgbToHsv.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC3.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_UV_REF.shader" />
@@ -88,6 +91,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VertexColor\SFN_VertexColor.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Lighten.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Matrix4x4Property\SFN_Matrix4x4Property.shader" />
+     <None Include="Assets\Scripts\Demigiant\DOTween\DOTween50.xml" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\Shader Presets\PresetCustomLighting.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Parallax\SFN_Parallax_DEP_REF.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Set\SFN_Set.shader" />
@@ -124,6 +128,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ViewPosition\SFN_ViewPosition.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Exp\SFN_Exp.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Floor\SFN_Floor.shader" />
+     <None Include="Assets\Scripts\Demigiant\DOTween\DOTween46.xml" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Power\SFN_Power.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Multiply\SFN_Multiply_2.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Distance\SFN_Distance.shader" />
@@ -178,6 +183,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Round\SFN_Round.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ArcSin\SFN_ArcSin.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Divide.shader" />
+     <None Include="Assets\Scripts\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectScale\SFN_ObjectScale_Default.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Multiply.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_VectorProjection\SFN_VectorProjection.shader" />
@@ -190,6 +196,7 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_PinLight.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_SwitchProperty\SFN_SwitchProperty.shader" />
      <None Include="Assets\Resources_Static\Prefabs\EventMarker\StartLocationPreview.shader" />
+     <None Include="Assets\Scripts\Demigiant\DOTween\DOTween43.xml" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_FogColor\SFN_FogColor.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Desaturate\SFN_Desaturate_DES.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_ABS.shader" />
@@ -215,8 +222,10 @@
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_3.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_NRM.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_4.shader" />
+     <None Include="Assets\Resources_Static\UI\MoveTargetIndicator\MoveTargetIndicator_View_Cube.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Min\SFN_Min_3.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_NormalBlend\SFN_NormalBlend.shader" />
+     <None Include="Assets\Scripts\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_VividLight.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ComponentMask\SFN_ComponentMask_CC4.shader" />
      <None Include="Assets\Scripts\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Dot\SFN_Dot_NRM.shader" />
@@ -280,6 +289,33 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenEditor">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenProEditor">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiLib">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ </Reference>
+ <Reference Include="DemiEditor">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenPro">
+ <HintPath>/Users/mjung/Documents/Unity/RPGBase/Assets/Scripts/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

@@ -187,7 +187,7 @@ public sealed class AstarManager : Manager
 		{
 			if (escape-- == 0)
 			{
-				Debug.LogWarning ("Safe Escape Expanding");
+				Debug.Log ("Safe Escape Expanding");
 
 				paths.Clear ();
 				return paths;
@@ -204,6 +204,9 @@ public sealed class AstarManager : Manager
 			paths.Add (cursorTile);
 		}
 		paths.Reverse ();
+
+		// remove current position
+		paths.RemoveAt (0);
 
 		return paths;
 	}

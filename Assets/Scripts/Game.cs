@@ -19,6 +19,8 @@ public class Game : MonoBehaviour
 
 	private Coroutine _FrameUpdater;
 
+	public GameObject _MoveTargetIndicator_PREFAB;
+
 
 	// Use this for initialization
 	void Awake ()
@@ -124,7 +126,7 @@ public class Game : MonoBehaviour
 						continue;
 					}
 
-					CommandMove (hit.point);
+					CommandMove (hit);
 				}
 			}
 
@@ -137,14 +139,18 @@ public class Game : MonoBehaviour
 		}
 	}
 
-	void CommandMove (Vector3 point)
+	void CommandMove (RaycastHit hit)
 	{
-		// Show WorldUI
-
-		
+		// Show Indicator
+		if (_MoveTargetIndicator_PREFAB != null)
+		{
+			GameObject indicator = Instantiate (_MoveTargetIndicator_PREFAB);
+			indicator.transform.position = hit.collider.transform.position;
+		}
 		
 		// Pawn MoveTo point
-		point.y = 0.0F;
-		_PlayerPawn.MoveTo (point);
+		Vector3 pos = hit.point;
+		pos.y = 0.0F;
+		_PlayerPawn.MoveTo (pos);
 	}
 }
