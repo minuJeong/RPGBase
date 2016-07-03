@@ -86,7 +86,7 @@ public sealed class AstarManager : Manager
 		// Func<AstarTile, float> G = (AstarTile cursor) => Vector2.Distance (cursor.XZ, start.XZ);
 		// Func<AstarTile, float> H = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);
 		// Func<AstarTile, float> F = (AstarTile cursor) => G (cursor) + H (cursor);
-		Func<AstarTile, float> F = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);;
+		Func<AstarTile, float> F = (AstarTile cursor) => Vector2.Distance (cursor.XZ, destination.XZ);
 
 		Func<AstarTile, EXPAND_RESULT> expand = (AstarTile cursor) =>
 		{
@@ -123,6 +123,11 @@ public sealed class AstarManager : Manager
 			bool isDestination = false;
 			nextCursors.ForEach (nCursor =>
 			{
+				if (isDestination)
+				{
+					return;
+				}
+
 				// Skip if nCursor is closed
 				if (closeSet.Find ((AstarTile closedTile) => closedTile.XZ == nCursor) != null)
 				{
@@ -137,7 +142,7 @@ public sealed class AstarManager : Manager
 						parentMap.Add (previousTile, currentCursor);
 					}
 
-					isDestination = open (_Tiles [nCursor]);
+					isDestination |= open (_Tiles [nCursor]);
 				}
 			});
 
@@ -171,7 +176,7 @@ public sealed class AstarManager : Manager
 		};
 
 		open (start);
-		int escape = 200;
+		int escape = 500;
 		while (expand (currentCursor) == EXPAND_RESULT.CONTINUE)
 		{
 			if (escape-- == 0)
