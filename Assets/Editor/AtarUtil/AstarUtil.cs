@@ -8,6 +8,8 @@ using System.Collections.Generic;
 
 public class AstarUtil : EditorWindow
 {
+	float _RandomizeYPosPower;
+
 	[MenuItem ("RBaseTools/EditorExtension/AstarUtil #%k")]
 	public static void OpenWindow ()
 	{
@@ -123,11 +125,46 @@ public class AstarUtil : EditorWindow
 			EditorUtility.DisplayDialog ("Message", "Normalize Complete", "Ok");
 		}
 
+		if (GUILayout.Button ("Reset Y Pos", GUILayout.Width (BUTTON_WIDTH), GUILayout.Height (BUTTON_HEIGHT)))
+		{
+			Array.ForEach (tiles, tile =>
+			{
+				Vector3 pos = tile.transform.position;
+				pos.y = 0.0F;
+				tile.transform.position = pos;
+
+				EditorUtility.SetDirty (tile);
+			});
+
+			EditorSceneManager.MarkSceneDirty (currentScene);
+			EditorUtility.DisplayDialog ("Message", "Reset Complete", "Ok");
+		}
+
+		EditorGUILayout.BeginHorizontal ();
+		GUILayout.Label ("Random Range");
+		_RandomizeYPosPower = EditorGUILayout.Slider (_RandomizeYPosPower, 0F, 5.0F);
+		EditorGUILayout.EndHorizontal ();
+		if (GUILayout.Button ("Random Y Pos", GUILayout.Width (BUTTON_WIDTH), GUILayout.Height (BUTTON_HEIGHT)))
+		{
+			Array.ForEach (tiles, tile =>
+			{
+				Vector3 pos = tile.transform.position;
+				pos.y = UnityEngine.Random.Range (_RandomizeYPosPower, -_RandomizeYPosPower);
+				tile.transform.position = pos;
+
+				EditorUtility.SetDirty (tile);
+			});
+
+			EditorSceneManager.MarkSceneDirty (currentScene);
+			EditorUtility.DisplayDialog ("Message", "Randomize Complete", "Ok");
+		}
+
 		GUILayout.Space (10);
 
-		if (GUILayout.Button ("Replace Selected Tiles", GUILayout.Width (BUTTON_WIDTH), GUILayout.Height (BUTTON_HEIGHT)))
+		if (GUILayout.Button ("Paint Selected Tiles", GUILayout.Width (BUTTON_WIDTH), GUILayout.Height (BUTTON_HEIGHT)))
 		{
-			ScriptableObject.CreateInstance<ReplaceTiles> ().Show ();
+			ScriptableObject.CreateInstance<ReplaceTiles> ().Show();
+
 			EditorSceneManager.MarkSceneDirty (currentScene);
 		}
 	}
